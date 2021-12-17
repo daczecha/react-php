@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+
+import { useEffect, useState } from "react";
+import Table from "./components/Table";
+
 
 function App() {
+  const [JSONData, setJSONData] = useState({});
+  const [fetched, setFetched] = useState(false);
+  
+  useEffect(()=>{
+    fetch('http://localhost/json-api/api.php')
+      .then(function (response) {
+        return response.json();
+      })
+      .then(function (data) {
+        setJSONData(data);
+        setFetched(true);
+      })
+      .catch(function (err) {
+        console.log(err);
+      });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+        {
+         fetched ? <Table className = 'table-wrapper' data={JSONData}/> : <h1>Loading..</h1>
+        }
     </div>
   );
 }
