@@ -1,4 +1,4 @@
-# PHP Warriors Challange / Task 4
+# PHP Warriors Challenge / Task 4
 
 ამ დავალებაში, მე უნდა წამომეღო ჩემ მიერ შექმნილი JSON API-დან ინფორმაცია და ლამაზად გამომეტანა React-ის აპლიკაციაში. </br>
 
