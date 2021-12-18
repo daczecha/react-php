@@ -1,7 +1,8 @@
 
 import { useEffect, useState } from "react";
 import Table from "./components/Table";
-
+import './css/App.css';
+import Loader from "./components/Loader";
 
 function App() {
   const [JSONData, setJSONData] = useState({});
@@ -24,7 +25,7 @@ function App() {
   return (
     <div className="App">
         {
-         fetched ? <Table className = 'table-wrapper' data={JSONData}/> : <h1>Loading..</h1>
+         fetched ? <Table className = 'table-wrapper' data={JSONData} setData = {setJSONData}/> : <Loader/>
         }
     </div>
   );
